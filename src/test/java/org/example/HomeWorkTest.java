@@ -49,7 +49,21 @@ class HomeWorkTest {
 
     @Test
     void findNthElement() {
+        Node<Integer> root = new Node<>(1);
+        root.add(2).add(3).add(4).add(5).add(5);
 
+        assertEquals(3, HOME_WORK.findNthElement(root,3));
 
+        // negative n
+        assertThrows(IndexOutOfBoundsException.class, () -> HOME_WORK.findNthElement(root, -1));
+        // nullable list
+        assertThrows(IllegalArgumentException.class, () -> HOME_WORK.findNthElement(null, 1));
+
+        // N-th element is null
+        root.getNext().getNext().setNext(null);
+        assertNull(HOME_WORK.findNthElement(root, 4));
+
+        // unreachable element
+        assertThrows(NullPointerException.class, () -> HOME_WORK.findNthElement(root, 5));
     }
 }

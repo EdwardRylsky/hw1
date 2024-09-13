@@ -69,6 +69,26 @@ public class HomeWork {
      * @return сам элемент
      */
     public <T> T findNthElement(Node<T> list, int n) {
-        return null;
+        if (list == null) {
+            throw new IllegalArgumentException("list can't be null");
+        }
+
+        if (n <= 0) {
+            throw new IndexOutOfBoundsException("n should be greater than 0");
+        }
+
+        int i = 0;
+
+        n--;
+        while (i < n) {
+            try {
+                list = list.getNext();
+                i++;
+            } catch (Exception e) {
+                throw new NullPointerException("Failed to try reach N-th element");
+            }
+        }
+
+        return list != null ? list.getValue() : null;
     }
 }
