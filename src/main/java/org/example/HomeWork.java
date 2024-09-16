@@ -33,12 +33,6 @@ public class HomeWork {
 
         int result = 0;
 
-        if (list.getNext() == null) {
-            if (list.getValue() != null) {
-                return pred.test(list.getValue()) ? 1 : 0;
-            } else return result;
-        }
-
         while (list.getNext() != null) {
             if (list.getValue() != null) {
                 if (pred.test(list.getValue())) {
